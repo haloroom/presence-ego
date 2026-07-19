@@ -33,3 +33,9 @@ ADR까지 작성할 필요 없는 빠른 결정을 기록합니다.
 - **결정**: Antigravity + Claude Code 조합 사용
 - **이유**: Antigravity의 워크스페이스 인식 + Claude Code의 강력한 코딩 지원
 - **영향**: .agents/AGENTS.md + CLAUDE.md 설정
+
+### 2026-07-19: Vercel 배포 플랫폼 채택
+- **결정**: 프로젝트 호스팅 플랫폼으로 Vercel을 채택하여 배포 설정 진행
+- **이유**: 정적 사이트(SSG) 배포가 매우 용이하며, GitHub 저장소와 무중단 자동 연동 및 최적화된 CDN 가속을 무료로 제공함
+- **영향**: docs/guides/deployment.md 생성, TECH_STACK 및 PROJECT_STATUS 최신화
+

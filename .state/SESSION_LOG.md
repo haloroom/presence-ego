@@ -16,21 +16,26 @@ agent: Antigravity (Gemini)
 - 히어로 일러스트레이션 생성 (Clay 스타일 3D)
 - Content Collections 스키마 정의 (glob loader)
 - npm run build 성공 (7 pages)
+- GitHub 원격 저장소(`https://github.com/haloroom/presence-ego.git`) 연동 및 최초 커밋 푸시 완료
+- Vercel 배포 플랫폼 채택 및 배포 가이드 문서(`docs/guides/deployment.md`) 추가
+- `posts/index.astro` 및 `Header.astro` 애니메이션 렌더링 큐 처리 보완 및 JSDoc 규칙 추가 적용
 
 ### Key Decisions
 - Inter 폰트 weight 500으로 Plain Black 대체
 - 카테고리-색상 매핑: reading→pink, study→teal, reflection→lavender, essay→peach
 - 크림 푸터 (NOT dark) — DESIGN.md 준수
 - Content Layer API (Astro 5.x)
+- 호스팅 솔루션으로 Vercel 채택 (Static SSG 빌드)
 
 ### Current State
 - 7개 페이지 빌드 성공
 - 디자인 시스템 전체 구현 완료
+- GitHub 원격 저장소 연동 및 푸시 완료
+- Vercel 배포 가이드 작성 완료 (대시보드 즉시 연동 가능 상태)
 
 ### Next Session Should
-1. npm run dev로 브라우저 테스트
-2. 배포 플랫폼 설정
-3. 추가 콘텐츠 작성
+1. Vercel 대시보드에서 GitHub 저장소 연동 및 배포 확인
+2. 실질적인 블로그 콘텐츠(에크하르트 톨레 철학 탐구글 등) 본격 작성 시작
 
 ### Open Issues
 - 없음

@@ -15,3 +15,5 @@ Format based on [Keep a Changelog](https://keepachangelog.com/).
 - 4개 샘플 콘텐츠: A New Earth, 에고 관찰, TypeScript 패턴, 내려놓음
 - 히어로 일러스트레이션 이미지
 - AI 코딩 인프라 초기 설정 (2026-07-19)
+- GitHub 원격 리포지토리 연동 및 커밋 푸시 (2026-07-19)
+- Vercel 배포 가이드 문서 추가 및 TECH_STACK/PROJECT_STATUS 업데이트 (2026-07-19)
