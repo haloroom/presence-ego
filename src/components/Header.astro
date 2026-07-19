@@ -1,0 +1,105 @@
+---
+/* Header navigation component — 64px cream nav bar */
+---
+<header class="site-header">
+  <nav class="container nav-inner">
+    <a href="/" class="nav-brand">presence · ego</a>
+    <ul class="nav-links">
+      <li><a href="/">홈</a></li>
+      <li><a href="/posts">글 목록</a></li>
+      <li><a href="/about">소개</a></li>
+    </ul>
+    <button class="nav-toggle" aria-label="메뉴 열기" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+
+  /**
+   * 모바일 네비게이션 메뉴의 열림/닫힘 상태를 토글합니다.
+   */
+  const handleNavToggle = () => {
+    if (!toggle || !links) return;
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    links.classList.toggle('open');
+  };
+
+  toggle?.addEventListener('click', handleNavToggle);
+</script>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: var(--nav-height);
+    background-color: var(--color-canvas);
+    border-bottom: 1px solid var(--color-hairline-soft);
+    backdrop-filter: blur(8px);
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+  }
+  .nav-brand {
+    font: var(--text-display-sm);
+    letter-spacing: var(--ls-display-sm);
+    color: var(--color-ink);
+    text-decoration: none;
+    font-size: 20px;
+  }
+  .nav-links {
+    display: flex;
+    gap: var(--spacing-lg);
+    list-style: none;
+  }
+  .nav-links a {
+    font: var(--text-nav-link);
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  .nav-links a:hover { color: var(--color-ink); }
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: var(--color-ink);
+    transition: transform var(--transition-fast);
+  }
+  @media (max-width: 767px) {
+    .nav-toggle { display: flex; }
+    .nav-links {
+      display: none;
+      position: absolute;
+      top: var(--nav-height);
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      background-color: var(--color-canvas);
+      padding: var(--spacing-lg);
+      border-bottom: 1px solid var(--color-hairline);
+      gap: var(--spacing-md);
+    }
+    .nav-links.open { display: flex; }
+    .nav-toggle[aria-expanded='true'] span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-toggle[aria-expanded='true'] span:nth-child(2) { opacity: 0; }
+    .nav-toggle[aria-expanded='true'] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+  }
+</style>

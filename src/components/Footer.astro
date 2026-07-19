@@ -1,0 +1,104 @@
+---
+/* Cream-toned footer (NOT dark) — per DESIGN.md */
+---
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h3>카테고리</h3>
+        <ul>
+          <li><a href="/posts?category=reading">독서</a></li>
+          <li><a href="/posts?category=study">공부</a></li>
+          <li><a href="/posts?category=reflection">성찰</a></li>
+          <li><a href="/posts?category=essay">에세이</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>탐구</h3>
+        <ul>
+          <li><a href="/about">소개</a></li>
+          <li><a href="/posts">전체 글</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>영감</h3>
+        <ul>
+          <li><a href="https://eckharttolle.com" target="_blank" rel="noopener">에크하르트 톨레</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3>프로젝트</h3>
+        <p class="footer-about">에크하르트 톨레의 'A New Earth'에서 영감받은 자기 탐구 블로그입니다.</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 presence · ego</p>
+      <p class="footer-quote">"당신은 생각이 아닙니다. 당신은 생각을 알아차리는 존재입니다."</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background-color: var(--color-surface-soft);
+    padding: 80px 0 var(--spacing-xl);
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-xl);
+    margin-bottom: var(--spacing-xxl);
+  }
+  .footer-col h3 {
+    font: var(--text-title-sm);
+    color: var(--color-ink);
+    margin-bottom: var(--spacing-md);
+  }
+  .footer-col ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+  }
+  .footer-col a {
+    font: var(--text-body-sm);
+    color: var(--color-muted);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  .footer-col a:hover { color: var(--color-ink); }
+  .footer-about {
+    font: var(--text-body-sm);
+    color: var(--color-muted);
+  }
+  .footer-bottom {
+    border-top: 1px solid var(--color-hairline);
+    padding-top: var(--spacing-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+  }
+  .footer-bottom p {
+    font: var(--text-body-sm);
+    color: var(--color-muted-soft);
+  }
+  .footer-quote {
+    font-style: italic;
+  }
+  @media (max-width: 767px) {
+    .footer-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+  @media (max-width: 480px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

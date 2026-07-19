@@ -1,0 +1,54 @@
+---
+/** Pre-footer CTA band */
+interface Props {
+  title?: string;
+  description?: string;
+  buttonText?: string;
+  buttonLink?: string;
+}
+const {
+  title = '당신의 내면을 탐구하세요',
+  description = '현존과 에고 사이에서 진실된 나를 발견하는 여정',
+  buttonText = '글 읽으러 가기',
+  buttonLink = '/posts',
+} = Astro.props;
+---
+
+<section class="cta-band">
+  <div class="container cta-inner">
+    <h2>{title}</h2>
+    <p>{description}</p>
+    <a href={buttonLink} class="btn btn-primary">{buttonText}</a>
+  </div>
+</section>
+
+<style>
+  .cta-band {
+    padding: var(--spacing-section) 0;
+  }
+  .cta-inner {
+    background-color: var(--color-surface-soft);
+    border-radius: var(--rounded-xl);
+    padding: 80px var(--spacing-xl);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+  }
+  .cta-inner h2 {
+    font: var(--text-display-md);
+    letter-spacing: var(--ls-display-md);
+    color: var(--color-ink);
+  }
+  .cta-inner p {
+    font: var(--text-body-md);
+    color: var(--color-muted);
+    max-width: 480px;
+  }
+  @media (max-width: 767px) {
+    .cta-inner {
+      padding: var(--spacing-xxl) var(--spacing-lg);
+    }
+  }
+</style>

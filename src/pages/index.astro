@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroBand from '../components/HeroBand.astro';
+import PostCard from '../components/PostCard.astro';
+import CtaBand from '../components/CtaBand.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts');
+const nonDraftPosts = allPosts.filter(post => !post.data.draft);
+const latestPosts = nonDraftPosts
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 6);
+---
+
+<BaseLayout title="presence · ego — 현존과 에고 사이" description="에크하르트 톨레의 가르침에서 영감받아 기록하는 자기 탐구 블로그입니다.">
+  <HeroBand />
+
+  <section class="latest-posts section-spacing">
+    <div class="container">
+      <h2 class="section-title">최근 글</h2>
+      <div class="posts-grid">
+        {latestPosts.map(post => (
+          <PostCard post={post} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    title="모든 기록 보기"
+    description="지금까지의 독서 노트, 공부 정리, 성찰과 에세이를 모두 모아둔 공간입니다."
+    buttonText="글 목록으로 가기"
+    buttonLink="/posts"
+  />
+</BaseLayout>
+
+<style>
+  .section-title {
+    font: var(--text-display-sm);
+    letter-spacing: var(--ls-display-sm);
+    text-align: center;
+    color: var(--color-ink);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+  }
+
+  @media (min-width: 768px) {
+    .posts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .posts-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

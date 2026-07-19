@@ -1,0 +1,115 @@
+---
+---
+<section class="hero-band">
+  <div class="container hero-grid">
+    <div class="hero-content">
+      <h1 class="display-xl">현존과 에고 사이,<br />진실된 자기 탐구</h1>
+      <p class="body-md text-muted">존재의 본질을 이해하고 에고의 굴레에서 벗어나는 여정을 기록합니다.</p>
+      <div class="hero-actions">
+        <a href="/posts" class="btn btn-primary">글 읽기</a>
+        <a href="/about" class="btn btn-secondary">소개</a>
+      </div>
+    </div>
+    <div class="hero-illustration">
+      <div class="hero-illustration-card">
+        <img src="/images/hero-illustration.jpg" alt="현존과 에고 일러스트" loading="eager" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero-band {
+    padding: var(--spacing-section) 0;
+    background-color: var(--color-canvas);
+  }
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    gap: var(--spacing-xxl);
+    align-items: center;
+  }
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-lg);
+  }
+  .display-xl {
+    font-family: var(--font-display);
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin: 0;
+    color: var(--color-primary);
+    white-space: pre-line;
+  }
+  .body-md {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .text-muted {
+    color: #4b5563; /* Can be replaced if there is a muted color token */
+  }
+  .hero-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    margin-top: var(--spacing-sm);
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-sm) var(--spacing-xl);
+    border-radius: var(--rounded-pill);
+    font-family: var(--font-body);
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-canvas);
+  }
+  .btn-primary:hover {
+    opacity: 0.9;
+  }
+  .btn-secondary {
+    background-color: transparent;
+    border: 1px solid var(--color-primary);
+    color: var(--color-primary);
+  }
+  .btn-secondary:hover {
+    background-color: var(--color-surface-soft);
+  }
+  .hero-illustration-card {
+    background-color: var(--color-surface-soft);
+    border-radius: var(--rounded-xl);
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-illustration-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  @media (max-width: 768px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .hero-actions {
+      justify-content: center;
+    }
+  }
+</style>

@@ -1,0 +1,96 @@
+---
+/** Post card component — category-colored feature card */
+interface Props {
+  post: {
+    id: string;
+    data: {
+      title: string;
+      description: string;
+      pubDate: Date;
+      category: 'reading' | 'study' | 'reflection' | 'essay';
+      tags: string[];
+    };
+  };
+}
+
+const { post } = Astro.props;
+const { title, description, pubDate, category, tags } = post.data;
+
+const CATEGORY_COLORS: Record<string, string> = {
+  reading: 'pink',
+  study: 'teal',
+  reflection: 'lavender',
+  essay: 'peach',
+};
+
+const CATEGORY_LABELS: Record<string, string> = {
+  reading: '독서',
+  study: '공부',
+  reflection: '성찰',
+  essay: '에세이',
+};
+
+const colorVariant = CATEGORY_COLORS[category] || 'cream';
+const categoryLabel = CATEGORY_LABELS[category] || category;
+const formattedDate = pubDate.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<a href={`/posts/${post.id}`} class={`feature-card feature-card--${colorVariant} post-card`}>
+  <span class="card-category">{categoryLabel}</span>
+  <h3 class="card-title">{title}</h3>
+  <p class="card-desc">{description}</p>
+  <div class="card-meta">
+    <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+    {tags.length > 0 && (
+      <div class="card-tags">
+        {tags.slice(0, 3).map(tag => <span class="card-tag">#{tag}</span>)}
+      </div>
+    )}
+  </div>
+</a>
+
+<style>
+  .post-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+    text-decoration: none;
+  }
+  .card-category {
+    font: var(--text-caption-uppercase);
+    letter-spacing: var(--ls-caption-uppercase);
+    text-transform: uppercase;
+    opacity: 0.85;
+  }
+  .card-title {
+    font: var(--text-title-lg);
+    letter-spacing: var(--ls-title-lg);
+    margin: 0;
+  }
+  .card-desc {
+    font: var(--text-body-sm);
+    opacity: 0.9;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .card-meta {
+    font: var(--text-caption);
+    opacity: 0.7;
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+  .card-tags {
+    display: flex;
+    gap: var(--spacing-xs);
+  }
+  .card-tag {
+    font: var(--text-caption);
+    opacity: 0.7;
+  }
+</style>

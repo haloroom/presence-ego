@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostCard from '../../components/PostCard.astro';
+import CategoryTabs from '../../components/CategoryTabs.astro';
+import { getCollection } from 'astro:content';
+
+const allPosts = await getCollection('posts');
+const posts = allPosts
+  .filter(post => !post.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+---
+
+<BaseLayout title="글 목록 — presence · ego" description="현존과 에고에 대한 탐구를 기록한 모든 글을 모았습니다.">
+  <section class="posts-page section-spacing">
+    <div class="container">
+      <header class="page-header">
+        <h1>글 목록</h1>
+        <p class="page-subtitle">공부, 독서, 느낌, 에세이를 기록합니다.</p>
+      </header>
+
+      <CategoryTabs />
+
+      <div class="posts-grid" id="postsGrid">
+        {posts.map(post => (
+          <div class="post-wrapper" data-category={post.data.category}>
+            <PostCard post={post} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    /**
+     * URL의 쿼리 파라미터를 읽어 해당 카테고리의 포스트 카드만 필터링하여 표시합니다.
+     */
+    const filterPosts = () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const activeCategory = urlParams.get('category') || 'all';
+
+      const posts = document.querySelectorAll<HTMLElement>('.post-wrapper');
+
+      posts.forEach((post) => {
+        const postCategory = post.dataset.category;
+
+        if (activeCategory === 'all' || postCategory === activeCategory) {
+          post.style.display = 'block';
+          // 브라우저 렌더링 큐에 맞추어 display 변경 후 애니메이션이 정상 동작하도록 2중 requestAnimationFrame 적용
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              post.style.opacity = '1';
+              post.style.transform = 'translateY(0)';
+            });
+          });
+        } else {
+          post.style.opacity = '0';
+          post.style.transform = 'translateY(10px)';
+          setTimeout(() => {
+            post.style.display = 'none';
+          }, 250);
+        }
+      });
+
+      const tabs = document.querySelectorAll('.category-tab');
+      tabs.forEach(tab => {
+        const tabValue = tab.getAttribute('data-tab');
+        if (tabValue === activeCategory) {
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+        } else {
+          tab.classList.remove('active');
+          tab.setAttribute('aria-selected', 'false');
+        }
+      });
+    };
+
+    filterPosts();
+    window.addEventListener('popstate', filterPosts);
+  });
+</script>
+
+<style>
+  .page-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .page-header h1 {
+    font: var(--text-display-lg);
+    letter-spacing: var(--ls-display-lg);
+    color: var(--color-ink);
+  }
+
+  .page-subtitle {
+    font: var(--text-body-md);
+    color: var(--color-muted);
+    margin-top: var(--spacing-sm);
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-xl);
+  }
+
+  .post-wrapper {
+    transition: opacity var(--transition-base), transform var(--transition-base);
+  }
+
+  @media (min-width: 768px) {
+    .posts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .posts-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

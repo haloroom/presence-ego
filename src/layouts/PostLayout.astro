@@ -1,0 +1,86 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import BadgePill from '../components/BadgePill.astro';
+
+interface Props {
+  frontmatter: {
+    title: string;
+    description: string;
+    pubDate: Date;
+    updatedDate?: Date;
+    category: string;
+    tags: string[];
+  };
+}
+const { frontmatter } = Astro.props;
+const { title, description, pubDate, updatedDate, category, tags } = frontmatter;
+
+const CATEGORY_LABELS: Record<string, string> = {
+  reading: '독서',
+  study: '공부',
+  reflection: '성찰',
+  essay: '에세이',
+};
+
+const formattedDate = pubDate.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
+const formattedUpdateDate = updatedDate?.toLocaleDateString('ko-KR', { year: 'numeric', month: 'long', day: 'numeric' });
+---
+
+<BaseLayout title={`${title} — presence · ego`} description={description}>
+  <article class="post-article">
+    <div class="container post-container">
+      <header class="post-header">
+        <BadgePill text={CATEGORY_LABELS[category] || category} />
+        <h1>{title}</h1>
+        <p class="post-description">{description}</p>
+        <div class="post-meta">
+          <time datetime={pubDate.toISOString()}>{formattedDate}</time>
+          {formattedUpdateDate && <span>· 수정: {formattedUpdateDate}</span>}
+        </div>
+        {tags.length > 0 && (
+          <div class="post-tags">
+            {tags.map(tag => <BadgePill text={`#${tag}`} />)}
+          </div>
+        )}
+      </header>
+      <div class="post-content">
+        <slot />
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .post-article {
+    padding: var(--spacing-section) 0;
+  }
+  .post-container {
+    max-width: 720px;
+  }
+  .post-header {
+    margin-bottom: var(--spacing-xxl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+  .post-header h1 {
+    font: var(--text-display-md);
+    letter-spacing: var(--ls-display-md);
+    color: var(--color-ink);
+  }
+  .post-description {
+    font: var(--text-body-md);
+    color: var(--color-muted);
+  }
+  .post-meta {
+    font: var(--text-caption);
+    color: var(--color-muted-soft);
+    display: flex;
+    gap: var(--spacing-xs);
+  }
+  .post-tags {
+    display: flex;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+  }
+</style>

@@ -1,0 +1,39 @@
+---
+/** Category filter tabs */
+interface Props {
+  activeCategory?: string;
+}
+const { activeCategory = 'all' } = Astro.props;
+
+const TABS = [
+  { value: 'all', label: '전체' },
+  { value: 'reading', label: '독서' },
+  { value: 'study', label: '공부' },
+  { value: 'reflection', label: '성찰' },
+  { value: 'essay', label: '에세이' },
+];
+---
+
+<div class="tabs-wrapper" role="tablist">
+  {TABS.map(tab => (
+    <a
+      href={tab.value === 'all' ? '/posts' : `/posts?category=${tab.value}`}
+      class:list={['category-tab', { active: activeCategory === tab.value }]}
+      role="tab"
+      data-tab={tab.value}
+      aria-selected={activeCategory === tab.value ? 'true' : 'false'}
+    >
+      {tab.label}
+    </a>
+  ))}
+</div>
+
+<style>
+  .tabs-wrapper {
+    display: flex;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: var(--spacing-xl);
+  }
+</style>
