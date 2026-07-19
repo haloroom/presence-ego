@@ -23,11 +23,11 @@ Astro 프로젝트 초기화 및 DESIGN.md 기반 디자인 시스템 구현 완
 | 레이아웃 / 컴포넌트 | ✅ Done | BaseLayout, PostLayout, 7개 컴포넌트 |
 | 페이지 라우팅 | ✅ Done | 홈, 글 목록, 개별 글, 소개 |
 | 샘플 콘텐츠 | ✅ Done | 4개 포스트 (reading, study, reflection, essay) |
-| 배포 설정 | ⬜ Todo | 호스팅 플랫폼 선택 |
+| 배포 설정 | ✅ Done | Vercel 호스팅 결정 및 세팅 완료 |
 
 ## Active Tasks
 
-- 배포 설정 (Cloudflare Pages / Vercel 등)
+- Vercel 대시보드 연동 및 최종 배포 확인
 - 추가 콘텐츠 작성
 
 ## Blockers

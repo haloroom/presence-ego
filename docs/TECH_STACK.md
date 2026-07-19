@@ -55,3 +55,10 @@ status: active
 | 카테고리 | reading, study, reflection, essay |
 | 태그 시스템 | Frontmatter `tags` 필드 |
 | 날짜 관리 | `pubDate`, `updatedDate` |
+
+### Infrastructure & Hosting
+
+| Service | Purpose | Notes |
+|:---|:---|:---|
+| GitHub | 소스 코드 버전 관리 | 원격 저장소 연동 완료 |
+| Vercel | 웹 애플리케이션 호스팅 | 정적 사이트(SSG) 자동 배포 설정 |
