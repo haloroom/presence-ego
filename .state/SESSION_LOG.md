@@ -5,7 +5,32 @@ agent: Antigravity (Gemini)
 
 # Session Log
 
-## Latest Session: 2026-07-19 (Session 2)
+## Latest Session: 2026-07-25 (Session 3)
+
+### What was done
+- 기술 에세이 "인지 부채 — AI 시대, 우리가 빌려 쓰는 것은 시간이 아니라 사고다" 작성
+- MIT Media Lab, Margaret-Anne Storey 연구 기반 리서치 수행
+- 인지 부채 개념, 다양한 관점, 실천 전략, 현존 철학 연결 포함
+- 빌드 성공 확인 (8 pages)
+
+### Key Decisions
+- 에세이 카테고리로 작성 (essay → peach 색상)
+- 기존 블로그 톤(성찰적 1인칭, 기술+내면 연결) 유지
+
+### Current State
+- 8개 페이지 빌드 성공
+- 5개 콘텐츠 포스트 (신규 1건 추가)
+
+### Next Session Should
+1. Vercel 배포 확인 및 추가 콘텐츠 작성
+2. SEO 최적화 (sitemap, RSS)
+
+### Open Issues
+- 없음
+
+---
+
+## Session 2: 2026-07-19
 
 ### What was done
 - Astro 5.x 프로젝트 초기화 (minimal template)
