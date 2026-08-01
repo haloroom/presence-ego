@@ -65,7 +65,7 @@ Angular 22에서 Signals가 기본 반응성 모델이 되었다. `signal()`, `c
 
 Svelte의 접근은 근본적으로 다르다. Virtual DOM도, Proxy도, Zone도 없다. **컴파일러가 빌드 시점에 반응성 코드를 순수 JavaScript로 변환**한다. 브라우저에 전달되는 코드에는 "프레임워크 런타임"이 사실상 존재하지 않는다.
 
-**발전 흐름**: `$:` 선언적 반응성(v3–4) → **Runes(v5)**
+**발전 흐름**: `$:` 선언적 반응성(v3~4) → **Runes(v5)**
 
 Svelte 5의 Runes는 반응성을 명시적으로 만들었다:
 
@@ -187,7 +187,7 @@ SSR의 TTFB 문제를 해결한다. HTML을 한 번에 완성하여 보내는 �
 
 **적합한 기술**: React + 전용 서버, Vue, Svelte
 
-실시간 앱은 초당 수십–수백 회의 상태 갱신이 일어난다. 렌더링 전략보다 **반응성 모델의 효율**이 중요하다. Svelte는 컴파일 타임 반응성 덕분에 빈번한 업데이트에서 오버헤드가 가장 적다. Vue의 Proxy 기반 추적도 변경된 부분만 정확히 업데이트한다. React는 Concurrent Mode와 `useTransition`으로 대량 업데이트를 우선순위별로 처리할 수 있다.
+실시간 앱은 초당 수십~수백 회의 상태 갱신이 일어난다. 렌더링 전략보다 **반응성 모델의 효율**이 중요하다. Svelte는 컴파일 타임 반응성 덕분에 빈번한 업데이트에서 오버헤드가 가장 적다. Vue의 Proxy 기반 추적도 변경된 부분만 정확히 업데이트한다. React는 Concurrent Mode와 `useTransition`으로 대량 업데이트를 우선순위별로 처리할 수 있다.
 
 ### 하이브리드 — 마케팅 랜딩 + 앱
 
@@ -216,7 +216,7 @@ dist/
 └── public/                    ← 정적 에셋 복사
 ```
 
-가장 단순한 형태다. `index.html`은 사실상 빈 껍데기이고, 모든 렌더링은 JS가 담당한다. Vite(Rolldown 1.0 기반, v8)가 Rollup 대비 10–30배 빠른 빌드를 제공하며, 자동 Code Splitting으로 `import()`된 모듈을 별도 청크로 분리한다.
+가장 단순한 형태다. `index.html`은 사실상 빈 껍데기이고, 모든 렌더링은 JS가 담당한다. Vite(Rolldown 1.0 기반, v8)가 Rollup 대비 10~30배 빠른 빌드를 제공하며, 자동 Code Splitting으로 `import()`된 모듈을 별도 청크로 분리한다.
 
 ### Next.js (App Router, Turbopack)
 
@@ -362,7 +362,7 @@ Svelte의 런타임 크기가 압도적으로 작은 이유: 프레임워크 "�
 
 - **적합한 기술**: Next.js(기본 타겟), Nuxt(Nitro auto-preset), SvelteKit(`adapter-vercel`)
 - **핵심 이점**: 자동 스케일링, 사용량 기반 과금, 인프라 관리 최소
-- **한계**: **Cold Start** — 함수가 "잠들었다가" 깨어나는 시간. 번들이 클수록 길어진다. Next.js의 경우 `.next/server/` 전체를 로드해야 하므로, 경량 프레임워크 대비 Cold Start가 길 수 있다. 또한 실행 시간 제한(보통 10–30초), 메모리 제한, 패키지 크기 제한(50–250MB)이 있다.
+- **한계**: **Cold Start** — 함수가 "잠들었다가" 깨어나는 시간. 번들이 클수록 길어진다. Next.js의 경우 `.next/server/` 전체를 로드해야 하므로, 경량 프레임워크 대비 Cold Start가 길 수 있다. 또한 실행 시간 제한(보통 10&#126;30초), 메모리 제한, 패키지 크기 제한(50&#126;250MB)이 있다.
 
 ### Edge (Cloudflare Workers, Vercel Edge Runtime, Deno Deploy)
 
@@ -370,7 +370,7 @@ Serverless의 진화형이다. 사용자와 가장 가까운 CDN 노드에서 �
 
 - **적합한 기술**: Next.js(Edge Runtime), Nuxt(Nitro edge preset), SvelteKit(`adapter-cloudflare`), Astro(Cloudflare adapter)
 - **핵심 이점**: 극도로 낮은 지연시간 (물리적 거리 최소화), Cold Start가 거의 없음 (V8 Isolate 기반)
-- **한계**: **Node.js API를 모두 쓸 수 없다**. `fs`, `child_process`, `net` 등 OS 레벨 API가 없다. 이는 Node.js 네이티브 모듈에 의존하는 라이브러리(예: `sharp`, `bcrypt`)를 사용할 수 없음을 의미한다. 메모리 제한(보통 128MB)과 CPU 시간 제한(5–50ms)도 엄격하다.
+- **한계**: **Node.js API를 모두 쓸 수 없다**. `fs`, `child_process`, `net` 등 OS 레벨 API가 없다. 이는 Node.js 네이티브 모듈에 의존하는 라이브러리(예: `sharp`, `bcrypt`)를 사용할 수 없음을 의미한다. 메모리 제한(보통 128MB)과 CPU 시간 제한(5~50ms)도 엄격하다.
 
 ### 전통 서버 (VPS, Docker, Kubernetes)
 
