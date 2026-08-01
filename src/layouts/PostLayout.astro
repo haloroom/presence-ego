@@ -50,6 +50,13 @@ const formattedUpdateDate = updatedDate?.toLocaleDateString('ko-KR', { year: 'nu
   </article>
 </BaseLayout>
 
+<script>
+  /** 포스트 콘텐츠 내 외부 링크를 새 탭에서 열리도록 설정 */
+  document.querySelectorAll('.post-content a[href^="http"]').forEach((link) => {
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noopener noreferrer');
+  });
+</script>
 <style>
   .post-article {
     padding: var(--spacing-section) 0;
