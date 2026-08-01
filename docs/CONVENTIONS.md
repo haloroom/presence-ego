@@ -106,7 +106,10 @@ draft: false
 #### 1. 볼드/이탤릭 마크업 검증
 - `*` 또는 `**`가 짝을 이루지 않아 원시 문자열로 노출되는 경우 확인
 - 빌드 결과 HTML에 `*` 텍스트가 남아있지 않은지 검증
-
+- **주의**: Sätteri 파서는 `**text(괄호)**` 패턴을 인식하지 못함
+  - ❌ `**React Server Components(RSC)**` → raw `**` 노출
+  - ✅ `<strong>React Server Components(RSC)</strong>` → 정상 볼드
+  - 괄호가 닫는 `**` 직전에 올 때 HTML `<strong>` 태그 사용
 #### 2. 취소선(Strikethrough) 검증
 - 의도하지 않은 `~` 취소선 렌더링 확인
 - **같은 줄에 `~`가 2개 이상** 있으면 파서가 취소선으로 해석할 수 있음
