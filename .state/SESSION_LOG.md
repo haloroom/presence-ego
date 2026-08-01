@@ -1,11 +1,40 @@
 ---
-last_session: 2026-07-19
-agent: Antigravity (Gemini)
+last_session: 2026-08-01
+agent: Antigravity (Claude Opus 4.6)
 ---
 
 # Session Log
 
-## Latest Session: 2026-07-25 (Session 3)
+## Latest Session: 2026-08-01 (Session 4)
+
+### What was done
+- 웹 애플리케이션 기술 조감도 study 글 작성 (`web-tech-landscape.md`)
+- 브레인스토밍 세션으로 글 구조 설계 (8개 섹션)
+- React, Vue, Angular, Svelte, Next.js, Nuxt, SvelteKit, Astro, WASM 비교 분석
+- 2026년 최신 버전 기준 References 포함
+- 빌드 성공 확인 (9 pages)
+
+### Key Decisions
+- study 카테고리 순수 기술 정리 (블로그 철학 컨셉 투영 안 함)
+- 환경별 적합성 비교 분석 중심 + 마지막에 전체 조감 비교표
+- 제품 유형별 적합한 기술에만 집중 (부적합 사례 제외)
+- WASM은 원리와 위치까지만, Rust 프레임워크 심층 비교 제외
+
+### Current State
+- 9개 페이지 빌드 성공
+- 6개 콘텐츠 포스트 (신규 1건 추가)
+
+### Next Session Should
+1. Vercel 배포 확인 및 추가 콘텐츠 작성
+2. SEO 최적화 (sitemap, RSS)
+3. 다크 모드 리뷰
+
+### Open Issues
+- 없음
+
+---
+
+## Session 3: 2026-07-25
 
 ### What was done
 - 기술 에세이 "인지 부채 — AI 시대, 우리가 빌려 쓰는 것은 시간이 아니라 사고다" 작성
