@@ -321,24 +321,32 @@ Astro의 빌드 결과는 **전통적인 정적 사이트와 가장 비슷**하�
 
 #### 브라우저 측
 
-| 측정 항목 | React | Vue | Angular | Svelte |
-|:---|:---|:---|:---|:---|
-| **프레임워크 런타임 크기** | ~42KB (gzip) | ~33KB (gzip) | ~90KB (gzip) | ~2KB (gzip) |
-| **Hydration 비용** | 전체 트리 재구성 | 전체 트리 재구성 | 전체 트리 재구성 | 컴파일된 바인딩 연결 |
-| **리렌더 비용** | VDOM diff (Fiber) | Proxy 추적 (타겟팅) | Signal 기반 (타겟팅) | 컴파일된 직접 업데이트 |
-| **메모리 패턴** | VDOM 트리 상시 유지 | VDOM + Proxy 래퍼 | Signal 그래프 | 추가 자료구조 최소 |
+**프레임워크 런타임 크기** (gzip 기준):
+
+| React | Vue | Angular | Svelte |
+|:---:|:---:|:---:|:---:|
+| ~42KB | ~33KB | ~90KB | ~2KB |
+
+**Hydration · 리렌더 · 메모리 비교**:
+
+| | 방식 | 특징 |
+|:---|:---|:---|
+| **React** | VDOM diff (Fiber) | 전체 트리 재구성 후 비교, VDOM 상시 유지 |
+| **Vue** | Proxy 추적 | 변경 대상만 타겟 리렌더, VDOM + Proxy 래퍼 유지 |
+| **Angular** | Signal 기반 | 변경 대상만 타겟 리렌더, Signal 그래프 유지 |
+| **Svelte** | 컴파일된 직접 업데이트 | 바인딩 연결만으로 hydrate, 추가 자료구조 최소 |
 
 Svelte의 런타임 크기가 압도적으로 작은 이유: 프레임워크 "런타임"이 아니라, 각 컴포넌트에 필요한 코드만 컴파일 결과에 인라인되기 때문이다. 반면 React는 Reconciler, Scheduler, Event System 등의 런타임을 항상 포함해야 한다.
 
 #### 서버 측
 
-| 측정 항목 | 영향 | 관련 기술 |
+| 항목 | 설명 | 관련 기술 |
 |:---|:---|:---|
-| **SSR 메모리** | 요청마다 컴포넌트 트리 인스턴스 생성 → GC 부하 | Next.js, Nuxt, SvelteKit |
-| **SSR CPU** | `renderToString` 소요 시간 → TTFB 결정 | 모든 SSR 프레임워크 |
-| **Streaming 오버헤드** | 청크 관리 비용 있으나, 전체 TTFB 개선 | Next.js (App Router) |
-| **Cold Start** | 번들 크기 → 서버리스 기동 시간 | 모든 SSR (Serverless 배포 시) |
-| **동시 처리** | Node.js 단일 스레드 → 이벤트 루프 블로킹 주의 | 모든 Node 기반 SSR |
+| **메모리** | 요청당 트리 생성 → GC 부하 | Next.js, Nuxt, SvelteKit |
+| **CPU** | 렌더링 시간 → TTFB 결정 | 모든 SSR 프레임워크 |
+| **Streaming** | 청크 비용 있으나 TTFB 개선 | Next.js App Router |
+| **Cold Start** | 번들 크기 비례 기동 시간 | Serverless 배포 시 |
+| **동시 처리** | 단일 스레드 이벤트 루프 | 모든 Node 기반 SSR |
 
 서버 측에서 주목할 점은 **SSR은 무료가 아니라는 것**이다. 요청마다 컴포넌트 트리를 생성·렌더링·폐기하므로 CPU와 메모리를 소비한다. Streaming SSR은 전체 렌더링 시간은 줄이지 않지만, 사용자가 느끼는 응답 속도(TTFB)를 개선한다. Serverless 환경에서는 Cold Start 시간이 추가되며, 이는 번들 크기에 비례한다.
 
