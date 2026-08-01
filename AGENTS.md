@@ -27,6 +27,7 @@ npm run preview      # 빌드 미리보기
 
 # Documentation
 bash scripts/validate-docs.sh    # 문서 무결성 검증
+bash scripts/validate-content.sh # 콘텐츠 QA 검수
 bash scripts/ai-context-update.sh  # 상태 파일 갱신
 ```
 
@@ -124,3 +125,9 @@ draft: false
 - ❌ Token Budget을 초과하는 문서 작성 금지
 - ✅ 코드 변경 시 관련 문서 반드시 업데이트
 - ✅ 커밋 전 `bash scripts/validate-docs.sh` 실행
+- ✅ **콘텐츠 작성/수정 후** `bash scripts/validate-content.sh` 실행 필수
+  - 볼드 마크업 잔여(`*`) 확인
+  - 의도하지 않은 취소선(`~` → `<del>`) 확인
+  - 테이블 레이아웃 적정성 확인
+  - 외부 링크 새 탭 열기 스크립트 포함 확인
+  - 상세 규칙: `docs/CONVENTIONS.md` → 콘텐츠 QA 검수 참조

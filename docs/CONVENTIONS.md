@@ -99,6 +99,30 @@ draft: false
 - 태그: 소문자 kebab-case, 최소 1개
 - draft: true로 시작, 완료 시 false
 
+### 콘텐츠 QA 검수 (글 작성 후 필수)
+
+글을 작성한 뒤 **반드시** 아래 항목을 검수한다. `bash scripts/validate-content.sh` 실행으로 자동 검증 가능.
+
+#### 1. 볼드/이탤릭 마크업 검증
+- `*` 또는 `**`가 짝을 이루지 않아 원시 문자열로 노출되는 경우 확인
+- 빌드 결과 HTML에 `*` 텍스트가 남아있지 않은지 검증
+
+#### 2. 취소선(Strikethrough) 검증
+- 의도하지 않은 `~` 취소선 렌더링 확인
+- **같은 줄에 `~`가 2개 이상** 있으면 파서가 취소선으로 해석할 수 있음
+- 해결: 해당 `~`를 HTML 엔티티 `&#126;`로 이스케이프
+- 빌드 결과 HTML에 의도하지 않은 `<del>` 태그가 없는지 검증
+
+#### 3. 테이블 레이아웃 검증
+- 테이블이 `post-container`(720px) 안에서 읽기 좋게 표시되는지 확인
+- `overflow-x: auto` + `white-space: nowrap` 스타일이 적용되어 있으므로, 넓은 표는 가로 스크롤로 처리됨
+- 셀 내용이 과도하게 길어 레이아웃이 깨지지 않는지 확인
+
+#### 4. 하이퍼링크 검증
+- 모든 외부 링크(`http://`, `https://`)가 새 탭에서 열리는지 확인
+- `PostLayout.astro`의 스크립트가 `target="_blank"` + `rel="noopener noreferrer"`를 자동 적용함
+- 빌드 결과에 스크립트가 포함되어 있는지 검증
+
 ## Commit Messages
 
 Conventional Commits:
