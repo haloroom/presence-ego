@@ -41,7 +41,7 @@ React는 **Virtual DOM** 기반이다. 상태가 변하면 전체 컴포넌트 �
 
 **발전 흐름**: Class 컴포넌트 → Hooks(v16.8) → Concurrent Mode/Fiber(v18) → **React Compiler(v19)**
 
-React 19에서 도입된 **React Compiler**는 게임 체인저다. 빌드 타임에 컴포넌트의 데이터 흐름을 분석하여 자동으로 메모이제이션을 적용한다. 개발자가 `useMemo`를 직접 쓸 필요가 사라졌다. 또한 **React Server Components(RSC)**가 표준 아키텍처로 자리잡으면서, 서버에서만 실행되는 컴포넌트와 클라이언트 컴포넌트를 명확히 분리할 수 있게 되었다.
+React 19에서 도입된 **React Compiler**는 게임 체인저다. 빌드 타임에 컴포넌트의 데이터 흐름을 분석하여 자동으로 메모이제이션을 적용한다. 개발자가 `useMemo`를 직접 쓸 필요가 사라졌다. 또한 **React Server Components** (RSC)가 표준 아키텍처로 자리잡으면서, 서버에서만 실행되는 컴포넌트와 클라이언트 컴포넌트를 명확히 분리할 수 있게 되었다.
 
 ### Vue — Proxy 기반 세밀한 추적
 
@@ -384,7 +384,7 @@ Serverless의 진화형이다. 사용자와 가장 가까운 CDN 노드에서 �
 
 SvelteKit, Astro, Nuxt(Nitro)는 **어댑터** 패턴으로 다양한 환경을 지원한다. 핵심 아이디어는 단순하다:
 
-1. 프레임워크가 **중간 표현(IR)**을 생성한다 (라우트 매니페스트, 핸들러 함수 등)
+1. 프레임워크가 **중간 표현** (IR)을 생성한다 (라우트 매니페스트, 핸들러 함수 등)
 2. 어댑터가 이 IR을 **타겟 환경의 형식**으로 변환한다
 
 예를 들어 SvelteKit의 `adapter-vercel`은 각 서버 라우트를 Vercel Serverless Function으로 변환하고, `adapter-static`은 모든 라우트를 사전 렌더링하여 정적 HTML로 출력한다. 개발자는 코드를 바꾸지 않고 어댑터만 교체하면 된다.
