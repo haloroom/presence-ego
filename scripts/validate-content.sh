@@ -72,6 +72,13 @@ for MD_FILE in "${MD_FILES[@]}"; do
     log_pass "볼드/이탤릭 마크업 정상"
   fi
 
+  # 소스 레벨 사전 검증: **...특수문자** 패턴 (괄호, 따옴표)
+  # 빌드 전에도 위험 패턴을 사전 경고
+  BOLD_SPECIAL=$(grep -nE '\*\*[^*]*[)"'"'"']\*\*' "$MD_FILE" | grep -v '^ *#' | grep -v '```' | head -5 || true)
+  if [ -n "$BOLD_SPECIAL" ]; then
+    log_warn "볼드+특수문자 패턴 (raw ** 노출 위험): ${BOLD_SPECIAL}"
+  fi
+
   # ── 2. 취소선 검증 ──
 
   STRIKETHROUGH=$(grep -oE '<del>[^<]+</del>' "$HTML_FILE" 2>/dev/null || true)
