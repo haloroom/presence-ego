@@ -19,3 +19,5 @@ Format based on [Keep a Changelog](https://keepachangelog.com/).
 - Vercel 배포 가이드 문서 추가 및 TECH_STACK/PROJECT_STATUS 업데이트 (2026-07-19)
 - 기술 에세이 "인지 부채" 콘텐츠 추가 (2026-07-25)
 - study 글 "웹 애플리케이션 기술 조감도" 콘텐츠 추가 (2026-08-01)
+- reading 글 "에고와 역할로부터의 자유" 콘텐츠 추가 (2026-08-02)
+- essay 글 "미트 프록시 — AI의 답을 옮기는 사람이 되지 않으려면" 콘텐츠 추가 (2026-08-05)

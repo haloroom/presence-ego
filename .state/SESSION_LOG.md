@@ -1,11 +1,40 @@
 ---
-last_session: 2026-08-02
+last_session: 2026-08-05
 agent: Antigravity (Claude Opus 4.6)
 ---
 
 # Session Log
 
-## Latest Session: 2026-08-02 (Session 5)
+## Latest Session: 2026-08-05 (Session 6)
+
+### What was done
+- 에세이 "미트 프록시 — AI의 답을 옮기는 사람이 되지 않으려면" 작성
+- `meat-proxy.md` — essay 카테고리, 리서치 중심 + 팀 논의 고찰
+- 6개 검증된 레퍼런스: Gruhn 원문, Willison, Sethi, Storey 논문, METR 연구, GitClear 보고서
+- 7개 섹션, 8분 내외 분량
+- 빌드 성공 확인 (14 pages)
+- 콘텐츠 QA 검수 통과
+
+### Key Decisions
+- 인지 부채 에세이와 독립된 글로 작성 (속편 아님)
+- 리서치 중심 + "동료와의 대화" 고찰 방향
+- 모든 인용/주장에 검증된 원본 링크 포함
+
+### Current State
+- 14개 페이지 빌드 성공
+- 8개 콘텐츠 포스트 (신규 1건 추가)
+
+### Next Session Should
+1. Vercel 배포 확인 및 추가 콘텐츠 작성
+2. SEO 최적화 (sitemap, RSS)
+3. 다크 모드 리뷰
+
+### Open Issues
+- 없음
+
+---
+
+## Session 5: 2026-08-02
 
 ### What was done
 - 이전 대화 '에고와 역할로부터의 자유' 컨텍스트 기반 독서 블로그글 작성
