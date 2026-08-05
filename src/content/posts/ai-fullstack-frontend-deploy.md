@@ -4,7 +4,7 @@ description: "컨벤션 기반 프레임워크, 제로 컨피그 배포, 모노�
 category: study
 tags: ["AI코딩", "프론트엔드", "배포", "모노레포", "넥스트", "버셀"]
 pubDate: 2026-08-04
-draft: true
+draft: false
 ---
 
 지난 1편에서는 데이터베이스와 백엔드 영역에서 <strong>Standard SQL(표준 SQL)</strong>과 스키마-퍼스트 접근법이 AI 에이전트에게 왜 유리한지 살펴보았습니다. 명확한 스키마가 존재할 때 AI는 환각 없이 정확한 코드를 작성할 수 있었습니다.

@@ -4,7 +4,7 @@ description: "표준 SQL, 스키마-퍼스트 ORM, 선언적 BaaS — AI 에이�
 category: study
 tags: ["AI코딩", "바이브코딩", "데이터베이스", "백엔드", "풀스택", "아키텍처"]
 pubDate: 2026-08-04
-draft: true
+draft: false
 ---
 
 2025년 초, Andrej Karpathy가 주창한 <strong>바이브 코딩(Vibe Coding)</strong>이라는 개념은 개발 생태계에 큰 파장을 일으켰습니다. 단순히 코드 몇 줄을 자동 생성하는 수준을 넘어, 기획 의도와 분위기(Vibe)만 던져주면 AI가 전체 코드를 직조해 내는 시대가 열린 것입니다.
