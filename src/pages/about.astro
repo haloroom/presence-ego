@@ -26,6 +26,10 @@ import CtaBand from '../components/CtaBand.astro';
         우리의 참된 본성인 '현존'과 마음이 만들어낸 가짜 나인 '에고'의 틈새에서, 집착을 내려놓고 내면의 소리를 정직하게 들여다봅니다.
         이 공간은 그 고요한 자기 탐구의 여정을 온전히 담아내기 위한 기록입니다.
       </p>
+      <p class="about-contact">
+        글에 대한 생각이나 이야기를 나누고 싶으시다면, 편하게 연락해 주세요.
+        <a href="mailto:haloroom2026@gmail.com">haloroom2026@gmail.com</a>
+      </p>
     </div>
   </section>
 
@@ -104,6 +108,20 @@ import CtaBand from '../components/CtaBand.astro';
     color: var(--color-body);
     margin-bottom: var(--spacing-md);
     line-height: 1.7;
+  }
+  .about-contact {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-border, rgba(0, 0, 0, 0.08));
+  }
+  .about-contact a {
+    color: var(--color-ink);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: opacity 0.2s ease;
+  }
+  .about-contact a:hover {
+    opacity: 0.7;
   }
   .about-categories h2 {
     font: var(--text-display-sm);
