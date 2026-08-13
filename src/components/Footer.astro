@@ -33,6 +33,7 @@
     </div>
     <div class="footer-bottom">
       <p>&copy; 2026 presence · ego</p>
+      <p class="footer-email"><a href="mailto:haloroom2026@gmail.com">haloroom2026@gmail.com</a></p>
       <p class="footer-quote">"당신은 생각이 아닙니다. 당신은 생각을 알아차리는 존재입니다."</p>
     </div>
   </div>
@@ -86,6 +87,14 @@
   }
   .footer-quote {
     font-style: italic;
+  }
+  .footer-email a {
+    color: var(--color-muted-soft);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+  }
+  .footer-email a:hover {
+    color: var(--color-ink);
   }
   @media (max-width: 767px) {
     .footer-grid {
